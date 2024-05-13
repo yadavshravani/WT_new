@@ -1,25 +1,19 @@
-public class MulltiThreading {
+public class MultiThreading {
     public static void main(String[] args) {
-        Mythread thread1 = new Mythread();
-        Mythread thread2 = new Mythread();
+        MyThread thread1 = new MyThread();
+        MyThread thread2 = new MyThread();
         thread1.start();
         thread2.start();
     }
 }
 
-public class Mythread extends Thread
-{
-    public void run()
-    {
-        for(int i = 0 ; i < 5 ; i ++)
-        {
+class MyThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
             System.out.println("Thread " + i);
-            try
-            {
+            try {
                 Thread.sleep(1000);
-            }
-            catch(InterruptedException e)
-            {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }

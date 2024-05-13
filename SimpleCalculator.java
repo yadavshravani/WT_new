@@ -1,40 +1,50 @@
 import java.util.Scanner;
 
-public class SimpleCalculator {
+public class Calculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.print("Enter the first number: ");
-            double num1 = scanner.nextDouble();
-            
-            System.out.print("Enter the second number: ");
-            double num2 = scanner.nextDouble();
-            
-            System.out.print("Enter operator (+, -, *, /): ");
-            char operator = scanner.next().charAt(0);
-            
-            double result = 0;
-            switch (operator) {
-                case '+': result = num1 + num2; break;
-                case '-': result = num1 - num2; break;
-                case '*': result = num1 * num2; break;
-                case '/': 
-                    if (num2 == 0) {
-                        System.out.println("Error! Division by zero is not allowed.");
-                        continue;
-                    }
+
+        System.out.println("Welcome to Simple Calculator");
+        System.out.println("----------------------------");
+
+        System.out.print("Enter the first number: ");
+        double num1 = scanner.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = scanner.nextDouble();
+
+        System.out.println("Select operation: ");
+        System.out.println("1. Addition (+)");
+        System.out.println("2. Subtraction (-)");
+        System.out.println("3. Multiplication (*)");
+        System.out.println("4. Division (/)");
+        System.out.print("Enter your choice: ");
+        int choice = scanner.nextInt();
+
+        double result = 0;
+        switch (choice) {
+            case 1:
+                result = num1 + num2;
+                break;
+            case 2:
+                result = num1 - num2;
+                break;
+            case 3:
+                result = num1 * num2;
+                break;
+            case 4:
+                if (num2 != 0) {
                     result = num1 / num2;
-                    break;
-                default:
-                    System.out.println("Error! Invalid operator.");
-                    continue;
-            }
-            
-            System.out.println("Result: " + result);
-            System.out.print("Press 'q' to quit, or any other key to continue: ");
-            char choice = scanner.next().charAt(0);
-            if (choice == 'q') break;
+                } else {
+                    System.out.println("Error! Division by zero is not allowed.");
+                    return;
+                }
+                break;
+            default:
+                System.out.println("Invalid choice!");
+                return;
         }
-        scanner.close();
+
+        System.out.println("Result: " + result);
     }
 }
